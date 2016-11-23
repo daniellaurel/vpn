@@ -4,12 +4,6 @@
 	@include('includes.header')
 	<body>
 
-
-
-
-
-
-
 		<!-- Navigation -->
 		<div class="navbar bs-docs-nav" role="banner">
 			<div class="container">
@@ -24,11 +18,7 @@
 				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="index.html">Home #1</a></li>
-								<li><a href="index-rslider.html">Home #2</a></li>
-							</ul>
+							<a href="{{ url('/') }}">Home</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>

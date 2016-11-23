@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => array('address' => 'noreply@admin.smartyvpn.com', 'name' => 'Smarty Admin'),
 
     /*
     |--------------------------------------------------------------------------

@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.mackart')
 
 @section('content')
+<div class="content">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -56,7 +57,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-btn fa-refresh"></i> Reset Password
                                 </button>
                             </div>
@@ -66,5 +67,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

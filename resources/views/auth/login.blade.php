@@ -35,18 +35,18 @@
                         {{ csrf_field() }}                                       
                                           <!-- Username -->
                                           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <label class="control-label col-md-3" for="username2">E-Mail</label>
+                                            <label class="control-label col-md-3" for="username2">Username</label>
                                             <div class="col-md-8">
-                                              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                              @if ($errors->has('email'))
+                                              <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
+                                              @if ($errors->has('username'))
                                                   <span class="help-block">
-                                                      <strong>{{ $errors->first('email') }}</strong>
+                                                      <strong>{{ $errors->first('username') }}</strong>
                                                   </span>
                                               @endif
                                             </div>
                                           </div>
                                           <!-- Password -->
-                                          < <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                             <label class="control-label col-md-3" for="password2">Password</label>
                                             <div class="controls col-md-8">
                                               <input id="password" type="password" class="form-control" name="password">
@@ -78,7 +78,7 @@
                                   
                                       <hr />
                                       <h5>New Account</h5>
-                                             Don't have an Account? <a href="register.html">Register</a>
+                                             Don't have an Account? <a href="{{ url('/register') }}">Register</a>
                                       <h5></h5>
                                              Forgot Your Password? <a href="{{ url('/password/reset') }}">Reset Password</a>
 
