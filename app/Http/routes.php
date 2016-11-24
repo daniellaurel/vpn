@@ -15,7 +15,18 @@
 Route::auth();
 
 Route::group(['middleware' => ['auth']], function() {
-	route::get('/', 'HomeController@index');
+	route::get('/', function(){
+		if( Auth::check() ) {
+			if(Auth::user()->hasRole('admin')) {
+				return Redirect::route('user.admin');
+			} else {
+				return Redirect::route('user.profile');
+			}
+		}
+	});
+
+	Route::get('admin', ['as' => 'user.admin', 'uses' => 'AdminController@index']);
+	Route::get('user', ['as' => 'user.profile', 'uses' => 'UserController@index']);
 
 });
 
