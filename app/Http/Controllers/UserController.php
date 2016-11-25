@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Role;
+use Auth;
 class UserController extends Controller
 {
     //
@@ -17,7 +18,14 @@ class UserController extends Controller
 
     public function create()
     {
-    	$roles = Role::lists('display_name','id');
+    	
+    	if(Auth::user()->hasRole('admin')) {
+				$roles = Role::lists('display_name','id');
+			} else {
+				$roles = Role::where('name', '!=', 'admin')->lists('display_name', 'id');
+			}
+    	
+
         return view('user.add',compact('roles'));
       
     }

@@ -97,7 +97,7 @@
                                             <label for="roles" class="col-md-4 control-label">Role</label>
 
                                             <div class="col-md-8">
-                                                 {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                                                 {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
 
                                                 @if ($errors->has('roles'))
                                                     <span class="help-block">
