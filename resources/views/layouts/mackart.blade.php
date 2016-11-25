@@ -6,13 +6,14 @@
 
 	@if( Auth::check() ) 
 	
-	@if(Auth::user()->hasRole('admin'))
-        @include('navigation.nav_admin')
-    @elseif(Auth::user()->hasRole('user'))
-    	@include('navigation.nav_user')
+		@if(Auth::user()->hasRole('admin'))
+	        @include('navigation.nav_admin')
+	    @elseif(Auth::user()->hasRole('user'))
+	    	@include('navigation.nav_user')
+	    @else
+	    @endif
     @else
-    @endif
-    
+    	@include('navigation.nav_guest')
 	@endif
 
  	
