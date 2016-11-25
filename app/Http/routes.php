@@ -28,6 +28,9 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('admin', ['as' => 'user.admin', 'uses' => 'AdminController@index']);
 	Route::get('user', ['as' => 'user.profile', 'uses' => 'UserController@index']);
 
+	Route::get('user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
+	Route::post('user/create', ['as' => 'user.store', 'uses' => 'UserController@store']);
+
 });
 
 
