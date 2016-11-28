@@ -18,9 +18,21 @@ class RoleTableSeeder extends Seeder
         		'description' => 'Admin Role'
         	],
         	[
-        		'name' => 'user',
-        		'display_name' => 'User',
-        		'description' => 'User Role'
+                'name' => 'sub-admin',
+                'display_name' => 'Sub Admin',
+                'description' => 'Sub Admin'
+            ],[
+                'name' => 'reseller',
+                'display_name' => 'Reseller',
+                'description' => 'Reseller'
+            ],[
+                'name' => 'sub-reseller',
+                'display_name' => 'Sub Reseller',
+                'description' => 'Sub Reseller'
+            ],[
+        		'name' => 'client',
+        		'display_name' => 'Client',
+        		'description' => 'Client'
         	]
         ];
 

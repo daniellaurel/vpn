@@ -1,14 +1,16 @@
 @extends('layouts.mackart')
 @section('content')
+   <div class="items">
+   <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
         @include('includes.alert')
             <section class="panel">
-                <header class="panel-heading">
+                <header class="panel-heading" style="background:none;">
                 
                     <span class="pull-right">
 
-                            <a class="btn btn-success btn-sm" href="{{ URL::route('user.admin') }}">Employee List</a>
+                            <a class="btn btn-danger btn-sm" href="{{ URL::route('user.list') }}">User List</a>
 
 					</span>
                 </header>
@@ -128,6 +130,8 @@
                 
             </section>
         </div>
+    </div>
+    </div>
     </div>
 @endsection
 

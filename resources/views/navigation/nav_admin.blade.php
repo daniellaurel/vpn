@@ -23,15 +23,14 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Add</a></li>
-								<li><a href="#">Edit</a></li>
-								<li><a href="#">Delete</a></li>
-								<li><a href="#">Deactivate</a></li>
+								<li><a href="{{ url('user/list') }}">List</a></li>
+								<li><a href="{{ url('user/create') }}">Add</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Roles <b class="caret"></b></a>
 							<ul class="dropdown-menu">
+								<li><a href="{{ url('roles') }}">List</a></li>
 								<li><a href="#">Add</a></li>
 								<li><a href="#">Edit</a></li>
 								<li><a href="#">Delete</a></li>
