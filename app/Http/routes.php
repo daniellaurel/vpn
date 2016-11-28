@@ -10,6 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/voucher', function () {
+  $code = str_random(10); //would produce a secret code of 10 chars.
+
+
+     var_dump($code);
+});
+
 
 
 Route::auth();
