@@ -32,26 +32,16 @@ class PermissionTableSeeder extends Seeder
         		'display_name' => 'Delete Role',
         		'description' => 'Delete Role'
         	],
-        	[
-        		'name' => 'item-list',
-        		'display_name' => 'Display Item Listing',
-        		'description' => 'See only Listing Of Item'
-        	],
-        	[
-        		'name' => 'item-create',
-        		'display_name' => 'Create Item',
-        		'description' => 'Create New Item'
-        	],
-        	[
-        		'name' => 'item-edit',
-        		'display_name' => 'Edit Item',
-        		'description' => 'Edit Item'
-        	],
-        	[
-        		'name' => 'item-delete',
-        		'display_name' => 'Delete Item',
-        		'description' => 'Delete Item'
-        	]
+            [
+                'name' => 'generate-voucher',
+                'display_name' => 'Generate Voucher',
+                'description' => 'Generate Voucher Code'
+            ],
+            [
+                'name' => 'assign-voucher',
+                'display_name' => 'Assign Voucher',
+                'description' => 'Assign Voucher to User'
+            ]
         ];
 
         foreach ($permission as $key => $value) {

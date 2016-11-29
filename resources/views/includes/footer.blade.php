@@ -22,11 +22,12 @@
 									<i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:#">someone@company.com</a>
 									<hr />
 									<div class="payment-icons">
-										<img src="img/payment/americanexpress.gif" alt="" />
-										<img src="img/payment/visa.gif" alt="" />
-										<img src="img/payment/mastercard.gif" alt="" />
-										<img src="img/payment/discover.gif" alt="" />
-										<img src="img/payment/paypal.gif" alt="" />
+										<img src="{{asset('/img/payment/americanexpress.gif') }}" alt="" />
+										<img src="{{asset('/img/payment/visa.gif') }}" alt="" />
+										<img src="{{asset('/img/payment/mastercard.gif') }}" alt="" />
+										<img src="{{asset('/img/payment/discover.gif') }}" alt="" />
+										<img src="{{asset('/img/payment/paypal.gif') }}" alt="" />
+
 									</div>
 								</div>
 							</div>

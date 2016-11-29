@@ -10,14 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/voucher', function () {
-  $code = str_random(10); //would produce a secret code of 10 chars.
-
-
-     var_dump($code);
-});
-
-
 
 Route::auth();
 
@@ -53,9 +45,11 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
+	/*voucher*/
+	Route::get('vouchers',['as'=>'vouchers.index','uses'=>'VoucherController@index']);
 
 
 });
 
 
-/*Route::get('/home', 'HomeController@index');*/
+

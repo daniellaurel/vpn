@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function vouchers() {
+        return $this->hasMany('App\Voucher');
+    }
+
+    public function available_vouchers() {
+      /*  reference http://stackoverflow.com/questions/18520209/how-to-access-model-hasmany-relation-with-where-condition*/
+        return $this->vouchers()->where('is_use','=', 0);
+    }
 }
