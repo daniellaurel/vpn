@@ -46,7 +46,10 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
 	/*voucher*/
-	Route::get('vouchers',['as'=>'vouchers.index','uses'=>'VoucherController@index']);
+	Route::get('vouchers',['as'=>'vouchers.index','uses'=>'VoucherController@index','middleware' => ['permission:generate-voucher|assign-voucher']]);
+	Route::get('vouchers/create',['as'=>'vouchers.create','uses'=>'VoucherController@create','middleware' => ['permission:generate-voucher|assign-voucher']]);
+	Route::post('vouchers/generate',['as'=>'vouchers.generate','uses'=>'VoucherController@generateVoucherCode','middleware' => ['permission:generate-voucher|assign-voucher']]);
+
 
 
 });

@@ -31,7 +31,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('vouchers.index') }}">list</a></li>
 								<li><a href="#">Apply</a></li>
-								<li><a href="#">Generate</a></li>
+								<li><a href="{{ route('vouchers.create') }}">Generate</a></li>
 							</ul>
 						</li>            
 						 @if (Auth::guest())

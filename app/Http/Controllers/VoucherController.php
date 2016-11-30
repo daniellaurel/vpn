@@ -19,4 +19,34 @@ class VoucherController extends Controller
 	
 
     }
+
+    public function create()
+    {
+    	
+        return view('vouchers.create');
+      
+    }
+
+    public function generateVoucherCode(Request $request) {
+	    if($request->ajax()) {
+	        do
+	        {
+	          	$voucher = str_random(10);
+	            $v = Voucher::where('code', $voucher)->first();
+	           	
+	        }
+       		while(!empty($v));
+
+	       	$v = new Voucher();
+		    $v->code = $voucher;
+		    $v->is_use = false;
+		    $v->is_expired = false;
+		    $v->save();
+	    	return $voucher;
+         }
+        else {
+        	return redirect('/');
+        }
+	}
+
 }

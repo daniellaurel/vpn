@@ -96,3 +96,4 @@
 		<script src="{{asset('js/html5shiv.js')}}"></script>  
 		<!-- Custom JS -->
 		<script src="{{asset('js/custom.js')}}"></script>  
+		@yield('script')
