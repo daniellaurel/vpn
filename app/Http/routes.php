@@ -50,6 +50,10 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('vouchers/create',['as'=>'vouchers.create','uses'=>'VoucherController@create','middleware' => ['permission:generate-voucher|assign-voucher']]);
 	Route::post('vouchers/generate',['as'=>'vouchers.generate','uses'=>'VoucherController@generateVoucherCode','middleware' => ['permission:generate-voucher|assign-voucher']]);
 
+	/*credits*/
+	Route::get('credits',['as'=>'credits.index','uses'=>'CreditsController@index']);
+	Route::post('credits/update',['as'=>'credits.update','uses'=>'CreditsController@update']);
+
 
 
 });

@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->tinyInteger('parent');
+            $table->boolean('is_active')->default(false);
+            $table->bigInteger('credits');
+            $table->bigInteger('duration');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
