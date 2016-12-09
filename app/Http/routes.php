@@ -52,7 +52,11 @@ Route::group(['middleware' => ['auth']], function() {
 
 	/*credits*/
 	Route::get('credits',['as'=>'credits.index','uses'=>'CreditsController@index']);
-	Route::post('credits/update',['as'=>'credits.update','uses'=>'CreditsController@update']);
+	Route::patch('credits/update',['as'=>'credits.update','uses'=>'CreditsController@updatecredit']);
+	/*duration*/
+	Route::get('durations',['as'=>'durations.index','uses'=>'CreditsController@users_duration']);
+	Route::get('durations/{id}/edit',['as'=>'duration.edit','uses'=>'CreditsController@edit']);
+	Route::patch('duration/{id}',['as'=>'duration.update','uses'=>'CreditsController@update']);
 
 
 

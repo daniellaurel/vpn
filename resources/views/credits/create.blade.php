@@ -16,7 +16,7 @@
 							  <div class="form-group">
 								<label class="control-label col-md-3" for="credit">Credits</label>
 								<div class="col-md-7">
-								 <input type="text" class="form-control" id="user-id">
+								 <input type="hidden" class="form-control" id="user-id">
 								 <input type="text" class="form-control" id="credit">
 								</div>
 							  </div>
@@ -43,13 +43,9 @@
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
-	            <h2>User Management</h2>
+	            <h2>Credit Management</h2>
 	        </div>
-	        <div class="pull-right">
-	        	
-	            <a class="btn btn-success" href="{{ route('user.create') }}"> Create New User</a>
-	          
-	        </div>
+	      
 	    </div>
 	</div>
 
@@ -88,20 +84,24 @@
 
 		$('.show-creditmodal').click(function(event) {
 			$('#user-id').val($(this).attr('userdata'));
+			$('#credit').val();
+		});
+
+
+		jQuery('#credit').keyup(function () { 
+		    this.value = this.value.replace(/[^0-9\.]/g,'');
 		});
 
 		$('#addcredits').click(function(event) {
 			var uid = $('#user-id').val();
+			var cred = $('#credit').val();
 			event.preventDefault();
 			  $.ajax({
 		      url: 'credits/update',
-		      type: "post",
-		      data: {'id':uid, '_token': '{!! csrf_token() !!}'},
+		      type: "patch",
+		      data: {'id':uid,'credits':cred, '_token': '{!! csrf_token() !!}'},
 		      success: function(data){
-		      	console.log(data);
-		       /*	$('#notice').empty();
-	            $('#notice').append('<p id="code-info" class="alert alert-success fade in"> <strong>Success!</strong> Please copy the voucher code.</p>');
-	            $('#vcode').val(data);*/
+		      window.location.reload();
 		      }
 		    }); 
 		});

@@ -30,16 +30,18 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Credits<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('credits.index') }}">Add</a></li>
+								<li><a href="{{ route('durations.index') }}">Duration</a></li>
+								<li><a href="{{ route('credits.index') }}">Transfer</a></li>
 							</ul>
 						</li> 	
-						<li class="dropdown">
+						<!-- <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vouchers <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('vouchers.index') }}">list</a></li>
 								<li><a href="#">Apply</a></li>
 								<li><a href="{{ route('vouchers.create') }}">Generate</a></li>
 							</ul>
-						</li>            
+						</li>             -->
 						 @if (Auth::guest())
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>

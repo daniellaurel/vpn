@@ -66,7 +66,7 @@ class UserController extends Controller
         }
         elseif(Auth::user()->hasRole('sub-admin')) {
 
-            $data =  User::whereNotIn('id', [1,Auth::user()->id])->orderBy('id','DESC')->paginate(5);
+            $data =  User::where('parent', Auth::user()->id)->orderBy('id','DESC')->paginate(5);
             return view('user.list',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
         }
         else {
