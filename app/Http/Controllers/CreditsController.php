@@ -14,7 +14,7 @@ class CreditsController extends Controller
 {
     public function index(Request $request)
     {
-    	$data =  User::whereNotIn('id', [Auth::user()->id])->orderBy('id','DESC')->paginate(5);
+    	    $data =  User::where('parent', Auth::user()->id)->orderBy('id','DESC')->paginate(5);
     	
             return view('credits.create',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
        
@@ -59,14 +59,51 @@ class CreditsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $current_log = User::find(Auth::user()->id);
         $user = User::find($id);
+
+        if(($current_log->credits - $request->duration) < 0) {
+            return redirect()->route('durations.index')
+                        ->with('error','Not Enough Credits');
+        }
+
+
         $duration = 2592000*$request->duration;
         $duration = $user->duration + $duration;
         $user->duration = $duration;
         $user->save();
+        $current_log->credits =  ($current_log->credits - $request->duration);
+        $current_log->save();
         return redirect()->route('durations.index')
                         ->with('success','User duration updated successfully');
     }
     
+    public function transfer(Request $request,$id) {
 
+        $data = User::find($id);
+        $downline =  User::where('parent', $id)->orderBy('id','DESC')->get();
+        return view('credits.transfer',compact('data','downline'));
+    }
+
+    public function transfer_credit(Request $request, $id)
+    {
+        /*var_dump($request->credits_to_user);
+        var_dump($request->credits);*/
+        $user = User::find($id);
+        if(($user->credits - $request->credits) < 0) {
+            return redirect()->route('credits.transfer',$id)->with('error','Not Enough Credits');
+        }
+        try {
+            $user_update = User::find($request->credits_to_user);
+            $user_update->credits = $user_update->credits + $request->credits;
+            $user_update->save();
+            $user->credits = ($user->credits - $request->credits);
+            $user->save();
+            return redirect()->route('credits.transfer',$id)->with('success','Credits Transfer Successful');
+        } catch (Exception $e) {
+            return redirect()->route('credits.transfer',$id)->with('error','Error');
+        }
+        
+
+    }
 }

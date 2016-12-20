@@ -53,6 +53,8 @@ Route::group(['middleware' => ['auth']], function() {
 	/*credits*/
 	Route::get('credits',['as'=>'credits.index','uses'=>'CreditsController@index']);
 	Route::patch('credits/update',['as'=>'credits.update','uses'=>'CreditsController@updatecredit']);
+	Route::get('credits/{id}/transfer',['as'=>'credits.transfer','uses'=>'CreditsController@transfer']);
+	Route::patch('credits/{id}',['as'=>'credits.transcred','uses'=>'CreditsController@transfer_credit']);
 	/*duration*/
 	Route::get('durations',['as'=>'durations.index','uses'=>'CreditsController@users_duration']);
 	Route::get('durations/{id}/edit',['as'=>'duration.edit','uses'=>'CreditsController@edit']);

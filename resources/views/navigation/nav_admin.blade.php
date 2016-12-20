@@ -27,11 +27,11 @@
 							<a href="{{ url('roles') }}">Roles</a>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Credits<b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Credits System<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ route('credits.index') }}">Add</a></li>
-								<li><a href="{{ route('durations.index') }}">Duration</a></li>
-								<li><a href="{{ route('credits.index') }}">Transfer</a></li>
+								<li><a href="{{ route('credits.index') }}">Add Credits</a></li>
+								<li><a href="{{ route('durations.index') }}">User Duration</a></li>
+								<li><a href="{{ route('credits.transfer', Auth::user()->id) }}">Transfer Credits</a></li>
 							</ul>
 						</li> 	
 						<!-- <li class="dropdown">
