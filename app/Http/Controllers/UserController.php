@@ -75,6 +75,25 @@ class UserController extends Controller
        
     }
 
+    public function subadminlist(Request $request)
+    {
+        if(Auth::user()->hasRole('admin')) {
+
+            $data =  User::whereNotIn('id', [Auth::user()->id])->orderBy('id','DESC')->paginate(5);
+            return view('user.list',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+
+        }
+        elseif(Auth::user()->hasRole('sub-admin')) {
+
+            $data =  User::where('parent', Auth::user()->id)->orderBy('id','DESC')->paginate(5);
+            return view('user.list',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+        }
+        else {
+            return redirect()->route('user.profile')->with('warning','You dont have permission');
+        }
+       
+    }
+
     public function show($id)
     {
         $user = User::find($id);

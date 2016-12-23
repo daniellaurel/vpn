@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
 	Route::post('user/create', ['as' => 'user.store', 'uses' => 'UserController@store']);
 	Route::get('user/list', ['as' => 'user.list', 'uses' => 'UserController@userlist']);
+	Route::get('user/subadmin/list', ['as' => 'user.subadmin', 'uses' => 'UserController@subadminlist']);
 	Route::get('user/{id}/show',['as' => 'user.show', 'uses' => 'UserController@show']);
 	Route::get('user/{id}/edit',['as'=>'user.edit','uses'=>'UserController@edit']);
 	Route::patch('user/{id}',['as'=>'user.update','uses'=>'UserController@update']);

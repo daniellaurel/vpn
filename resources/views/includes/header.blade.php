@@ -1,7 +1,7 @@
 	<head>
 		<meta charset="utf-8">
 		<!-- Title here -->
-		<title>Title - MacKart</title>
+		<title>Smarty - VPN</title>
 		<!-- Description, Keywords and Author -->
 		<meta name="description" content="Your description">
 		<meta name="keywords" content="Your,Keywords">
@@ -32,8 +32,8 @@
 					<div class="col-md-4">
 						<!-- Logo. Use class "color" to add color to the text. -->
 						<div class="logo">
-							<h1><a href="#">Mac<span class="color bold">Kart</span></a></h1>
-							<p class="meta">online shopping is fun!!!</p>
+							<h1><a href="#">Smarty<span class="color bold">VPN</span></a></h1>
+							<p class="meta">The next awesome VPN!!!</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-offset-4">
