@@ -79,30 +79,53 @@ class CreditsController extends Controller
     }
     
     public function transfer(Request $request,$id) {
-
+        if(Auth::user()->hasRole('admin')) {
+            $data = User::find($id);
+            $downline = User::whereHas('roles', function($q)
+            {
+                $q->where('name','!=' ,'client');
+            })->whereNotIn('id', [Auth::user()->id])->orderBy('id','ASC')->get();
+            return view('credits.transfer',compact('data','downline'));
+        }
         $data = User::find($id);
-        $downline =  User::where('parent', $id)->orderBy('id','DESC')->get();
+        $downline = User::whereHas('roles', function($q)
+        {
+            $q->where('name','!=' ,'client');
+        })->where('parent', $id)->orderBy('id','ASC')->get();
         return view('credits.transfer',compact('data','downline'));
     }
 
     public function transfer_credit(Request $request, $id)
     {
-        /*var_dump($request->credits_to_user);
-        var_dump($request->credits);*/
-        $user = User::find($id);
-        if(($user->credits - $request->credits) < 0) {
-            return redirect()->route('credits.transfer',$id)->with('error','Not Enough Credits');
+        if(Auth::user()->hasRole('admin')) {
+
+           try {
+                $user_update = User::find($request->credits_to_user);
+                $user_update->credits = $user_update->credits + $request->credits;
+                $user_update->save();
+                return redirect()->route('credits.transfer',$id)->with('success','Credits Transfer Successful');
+            } catch (Exception $e) {
+                return redirect()->route('credits.transfer',$id)->with('error','Error');
+            }
+
         }
-        try {
-            $user_update = User::find($request->credits_to_user);
-            $user_update->credits = $user_update->credits + $request->credits;
-            $user_update->save();
-            $user->credits = ($user->credits - $request->credits);
-            $user->save();
-            return redirect()->route('credits.transfer',$id)->with('success','Credits Transfer Successful');
-        } catch (Exception $e) {
-            return redirect()->route('credits.transfer',$id)->with('error','Error');
+        else {
+            $user = User::find($id);
+            if(($user->credits - $request->credits) < 0) {
+                return redirect()->route('credits.transfer',$id)->with('error','Not Enough Credits');
+            }
+            try {
+                $user_update = User::find($request->credits_to_user);
+                $user_update->credits = $user_update->credits + $request->credits;
+                $user_update->save();
+                $user->credits = ($user->credits - $request->credits);
+                $user->save();
+                return redirect()->route('credits.transfer',$id)->with('success','Credits Transfer Successful');
+            } catch (Exception $e) {
+                return redirect()->route('credits.transfer',$id)->with('error','Error');
+            }
         }
+       
         
 
     }

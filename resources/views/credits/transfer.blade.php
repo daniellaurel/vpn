@@ -27,7 +27,15 @@
       <div class="col-md-9 col-sm-9">
 
           <h5 class="title">Hello {{ strtoupper($data->name) }} </h5>
-          <strong><h3>You have {{ $data->credits }} Credits</h3></strong>
+        @if( Auth::check() ) 
+          @if(Auth::user()->hasRole('admin'))
+              <strong><h3>You have Unlimited Credits</h3></strong>
+          @else
+             <strong><h3>You have {{ $data->credits }} Credits</h3></strong>
+          @endif
+        @else
+        @endif
+         
           <div class="address">
             <address>
               795 Folsom Ave, Suite 600<br>
